@@ -6,6 +6,8 @@ use \Slim\Slim;   //namespace
 
 use \Hcode\Page;  //namespace
 
+use \Hcode\PageAdmin;  //namespace
+
 
 $app = new Slim();
 
@@ -24,6 +26,17 @@ $app->get('/', function() {
 	$page->setTpl("index"); //carrega o body
 
 });
+
+
+$app->get('/admin', function() {
+
+
+	$page = new PageAdmin(); //carrega o header
+
+	$page->setTpl("index"); //carrega o body
+
+});
+
 
 $app->run();
 
