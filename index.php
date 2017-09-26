@@ -34,7 +34,7 @@ $app->get('/', function() {
 
 $app->get('/admin', function() {
 
-	User::verifylogin();
+	User::verifyLogin();
 
 	$page = new PageAdmin(); //carrega o header
 
@@ -69,6 +69,136 @@ $app->get('/admin/logout', function() {
 
 	header("Location: /admin/login");
 });
+
+
+/*
+
+Abaixo seguem-se as funções de Administração CRUD
+
+Create (C) Read (R) Update (U) e Delete (D)
+
+*/
+
+
+
+/*
+
+Função Read (R) para ler e mostrar todos os utilizadores
+
+*/
+
+
+
+$app->get("/admin/users", function() {
+
+	User::verifyLogin();
+
+	$users = User::listAll();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("users", array(
+		"users"=>$users
+		));
+});
+
+
+
+/*
+
+Função Create (C) para criar um novo utilizador
+
+*/
+
+
+
+$app->get("/admin/users/create", function() {
+
+	User::verifyLogin();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("users-create");
+});
+
+
+
+
+
+/*
+
+Função Delete (D) para apagar um utilizador
+
+Nota importante, o método Delete
+
+$app->get("/admin/users/:iduser/delete", function($iduser)
+
+deve ficar sempre acima do método Update
+
+$app->get("/admin/users/:iduser", function($iduser)
+
+
+*/
+
+
+
+$app->get("/admin/users/:iduser/delete", function($iduser) {
+
+	User::verifyLogin();
+});
+
+
+
+
+
+
+
+/*
+
+Função Update (U) para alterar um utilizador
+
+$app->get("/admin/users/:iduser", function($iduser)
+
+Ao inserir o endereço com o :iduser a alterar
+
+por exemplo para o :iduser = 4
+
+http://www.hcodecommerce.com/admin/users/4
+
+O programa vai assumir que a variável $iduser 
+
+é igual a 4
+
+ou seja function(4)
+
+*/
+
+
+
+$app->get("/admin/users/:iduser", function($iduser) {
+
+	User::verifyLogin();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("users-update");
+});
+
+
+
+$app->post("/admin/users/create", function() {
+
+	User::verifyLogin();
+});
+
+
+
+$app->post("/admin/users/:iduser", function($iduser) {
+
+	User::verifyLogin();
+});
+
+
 
 
 $app->run();
