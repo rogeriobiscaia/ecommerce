@@ -7,6 +7,7 @@ use \Hcode\DB\Sql;
 use \Hcode\Model;
 
 
+
 class User extends Model {
 
 	const SESSION = "User";
