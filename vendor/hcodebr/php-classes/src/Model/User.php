@@ -91,19 +91,20 @@ class User extends Model {
 
 		$sql = new Sql();
 
+
 		$passwordorigin = $this->getdespassword();
 
 		$passwordnew = password_hash($passwordorigin, PASSWORD_DEFAULT, [
 		"cost"=>12
 		]);
 
+       
 
-
-		$results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
+		$results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :passwordnew, :desemail, :nrphone, :inadmin)", array(
 			":desperson"=>$this->getdesperson(),
 			":deslogin"=>$this->getdeslogin(),
-			//":passwordnew" => $passwordnew,
-			":despassword"=>$this->getdespassword(),
+			":passwordnew" => $passwordnew,
+			//":despassword"=>$this->getdespassword(),
 			":desemail"=>$this->getdesemail(),
 			":nrphone"=>$this->getnrphone(),
 			":inadmin"=>$this->getinadmin()
