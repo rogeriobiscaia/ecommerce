@@ -53,6 +53,14 @@ $this->mail = new \PHPMailer;
 //Tell PHPMailer to use SMTP
 $this->mail->isSMTP();
 
+$this->mail->SMTPOptions = array(
+	'ssl' => array(
+		'verify_peer' => false,
+		'verify_peer_name' => false,
+		'allow_self_signed' => true
+		)
+	);
+
 
 
 //Enable SMTP debugging
@@ -138,6 +146,8 @@ if (!$this->mail->send()) {
 //Function to call which uses the PHP imap_*() functions to save messages: https://php.net/manual/en/book.imap.php
 //You can use imap_getmailboxes($imapStream, '/imap/ssl') to get a list of available folders or labels, this can
 //be useful if you are trying to get this working on a non-Gmail IMAP server.
+
+/*
 function save_mail($this->mail)
 {
     //You can change 'Sent Mail' to any other folder or tag
@@ -151,7 +161,7 @@ function save_mail($this->mail)
 
     return $result;
 }
-
+*/
 
 
 	} //fim do construtor
