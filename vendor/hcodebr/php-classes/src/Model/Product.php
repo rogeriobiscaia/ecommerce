@@ -24,6 +24,20 @@ class Product extends Model {
 	}
 
 
+	public static function checkList($List)
+	{
+
+		foreach ($List as &$row) {
+			
+			$p = new Product();
+			$p->setData($row);
+			$row = $p->getValues();
+		}
+
+		return $List;
+	}
+
+
 	public function save() 
 	{
 
@@ -90,7 +104,7 @@ class Product extends Model {
 		} else {
 
 
-			$url = "res/site/img/product.jpg";
+			$url = "../../res/site/img/product.jpg";
 
 
 		}

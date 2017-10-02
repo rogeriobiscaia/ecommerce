@@ -1,6 +1,7 @@
 <?php
 
 use \Hcode\Page;
+use \Hcode\Model\Product;
 
 
 $app->get('/', function() {
@@ -11,9 +12,13 @@ $app->get('/', function() {
 
 	//echo json_encode($results);
 
+	$products = Product::listAll();
+
 	$page = new Page(); //carrega o header
 
-	$page->setTpl("index"); //carrega o body
+	$page->setTpl("index", [
+		'products'=>Product::checkList($products)
+		]); //carrega o body
 
 });
 
