@@ -40,21 +40,51 @@
                 <div class="product-pagination text-center">
                     <nav>
                         <ul class="pagination">
+
+                        <?php $counter1=-1;  if( isset($previous) && ( is_array($previous) || $previous instanceof Traversable ) && sizeof($previous) ) foreach( $previous as $key1 => $value1 ){ $counter1++; ?>
+
                         <li>
-                            <a href="#" aria-label="Previous">
+                            <a href="<?php echo htmlspecialchars( $value1["previous"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" aria-label="Previous">
                             <span aria-hidden="true">«</span>
                             </a>
                         </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+                        <?php } ?>
+
+
+
+
+                        <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
+
+                        <li><a href="<?php echo htmlspecialchars( $value1["link"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["page"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
+                        
+                        
+                        <?php } ?>
+
+
+
+                        <?php $counter1=-1;  if( isset($next) && ( is_array($next) || $next instanceof Traversable ) && sizeof($next) ) foreach( $next as $key1 => $value1 ){ $counter1++; ?>
+
                         <li>
-                            <a href="#" aria-label="Next">
+                            <a href="<?php echo htmlspecialchars( $value1["next"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" aria-label="Next">
                             <span aria-hidden="true">»</span>
                             </a>
                         </li>
+                        
+                        <?php } ?>
+
+
+
+                        <!--
+                        <?php $counter1=-1;  if( isset($next) && ( is_array($next) || $next instanceof Traversable ) && sizeof($next) ) foreach( $next as $key1 => $value1 ){ $counter1++; ?>
+
+                        <li>
+                            <a href="<?php echo htmlspecialchars( $value1["next"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                            </a>
+                        </li>
+                        <?php } ?>
+
+                        -->
                         </ul>
                     </nav>                        
                 </div>
