@@ -49,8 +49,6 @@ $app->get("/categories/:idcategory", function($idcategory){
 
 	$previous = [];
 
-	$totalpages = $pagination['pages'];
-
 	if ($page > 1) {
 
 	for ($i=2; $i > 1; $i--) { 
@@ -100,6 +98,24 @@ $app->get("/categories/:idcategory", function($idcategory){
 		'next'=>$next
 		]); 
 	
+});
+
+
+
+$app->get("/products/:desurl", function($desurl){
+
+
+	$product = new Product();
+
+	$product->getFromURL($desurl);
+
+	$page = new Page();
+
+	$page->setTpl("product-detail", [
+		'product'=>$product->getValues(),
+		'categories'=>$product->getCategories()
+		]);
+
 });
 
 

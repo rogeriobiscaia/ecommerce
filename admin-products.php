@@ -20,6 +20,20 @@ $app->get("/admin/products", function(){
 });
 
 
+
+
+$app->get("/admin/products/admin/users", function(){
+
+	
+	header("Location: /admin/users");
+	exit;
+
+
+});
+
+
+
+
 $app->get("/admin/products/create", function(){
 
 	User::verifyLogin();
