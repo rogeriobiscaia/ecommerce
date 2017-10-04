@@ -41,34 +41,67 @@ class User extends Model {
 			||
 			!$_SESSION[User::SESSION]
 			||
-			!(int)$_SESSION[User::SESSION]["iduser"] > 0
+			!(int)$_SESSION[User::SESSION]['iduser'] > 0
 		) {
 
 			//Não está logado
-			return false;
+			return true;
 
 		} else {
 
+
+			
+
+		}
+
+
+		
+
 			if ($inadmin === true && (bool)$_SESSION[User::SESSION]['inadmin'] === true) {
 
-				/*Utilizador com login e password
+
+				/*
+				Utilizador com login e password
 				com privilégios de administração
 				e que está a tentar ter acesso à 
 				àrea de administração
 				*/
-				
-				return true;
 
-			}  else if ($inadmin === false) {
 
-				return true;
-
-			}  else {
 
 				return false;
+
+				
+
+			}   else if ($inadmin === true && (bool)$_SESSION[User::SESSION]['inadmin'] === false) {
+
+				return true;
+
+				
+
+			}  /*else {
+
+				return true;
+
+				
+
+
+			
+
+
 			}
-		}
+
+			*/
+
+
+
+		
+		
+
 	}
+
+
+	
 
 
 
