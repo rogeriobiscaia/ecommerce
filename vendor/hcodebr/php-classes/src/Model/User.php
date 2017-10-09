@@ -133,7 +133,7 @@ class User extends Model {
 		{
 			$user = new User();
 
-			$data['desperson'] = utf8_encode($data['desperson']);
+			$data["desperson"] = utf8_encode($data["desperson"]);
 
 			$user->setData($data);
 
@@ -202,6 +202,7 @@ class User extends Model {
 
 		$results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :passwordnew, :desemail, :nrphone, :inadmin)", array(
 			":desperson"=>utf8_decode($this->getdesperson()),
+			//":desperson"=>$this->getdesperson(),
 			":deslogin"=>$this->getdeslogin(),
 			//":passwordnew" => $passwordnew,
 			":despassword"=>User::getPasswordHash($this->getdespassword()),
@@ -426,6 +427,18 @@ class User extends Model {
 	}
 
 
+	public static function getErrorRegister()
+	{
+
+		$msg = (isset($_SESSION[User::ERROR_REGISTER]) && $_SESSION[User::ERROR_REGISTER]) ? $_SESSION[User::ERROR_REGISTER] : '';
+
+		User::clearErrorRegister();
+
+		return $msg;
+
+	}
+
+
 	public static function clearErrorRegister()
 	{
 
@@ -439,7 +452,7 @@ class User extends Model {
 		$sql = new Sql();
 
 		$results = $sql->select("SELECT * FROM tb_users WHERE deslogin = :deslogin", [
-			':deslogin'=>$login
+			':deslogin'=>$Login
 			]);
 
 		return (count($results) > 0);
