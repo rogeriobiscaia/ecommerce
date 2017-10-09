@@ -175,7 +175,23 @@ class Cart extends Model {
 				':idproduct'=>$product->getidproduct()
 				]);
 		}
+
+
+		$newprice = 0;
+
+		
+
+
+		$totals = $this->getProductsTotals();
+
+		$this->setvlsubtotal($newprice);
+
+		
 	}
+
+		
+
+	
 
 
 
@@ -229,6 +245,8 @@ class Cart extends Model {
 
 		$totals = $this->getProductsTotals();
 
+
+
 	    $nrzipcode = str_replace('-', '', $nrzipcode);
 
 
@@ -243,6 +261,7 @@ class Cart extends Model {
 	    if ($nrzipcode == 0 ) {
 
 				throw new \Exception("O código postal não pode ser 0");
+
 			}
 
 
