@@ -68,10 +68,6 @@
                         </label>
                         <input type="text" id="nome" name="name" class="input-text" value="<?php echo htmlspecialchars( $registerValues["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                     </p>
-
-
-
-
                     <p class="form-row form-row-first">
                         <label for="email">E-mail <span class="required">*</span>
                         </label>
@@ -81,6 +77,12 @@
                         <label for="phone">Telefone
                         </label>
                         <input type="text" id="phone" name="phone" class="input-text" value="<?php echo htmlspecialchars( $registerValues["phone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                    </p>
+
+                    <p class="form-row form-row-last">
+                        <label for="username">Username <span class="required">*</span>
+                        </label>
+                        <input type="text" id="username" name="username" class="input-text">
                     </p>
 
                     <p class="form-row form-row-last">
