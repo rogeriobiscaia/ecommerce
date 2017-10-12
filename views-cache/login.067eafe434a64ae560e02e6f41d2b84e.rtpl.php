@@ -79,11 +79,13 @@
                         <input type="text" id="phone" name="phone" class="input-text" value="<?php echo htmlspecialchars( $registerValues["phone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                     </p>
 
+                    <!--
                     <p class="form-row form-row-last">
                         <label for="username">Username <span class="required">*</span>
                         </label>
                         <input type="text" id="username" name="username" class="input-text">
                     </p>
+                -->
 
                     <p class="form-row form-row-last">
                         <label for="senha">Senha <span class="required">*</span>
