@@ -93,27 +93,27 @@ class Address extends Model {
 
 
 
-		$idaddress = '';
+		$idaddress = NULL;
 
 
-		$desstate = '';
+		$desstate = NULL;
 
-		$desdistrict = '';
+		$desdistrict = NULL;
 
 
 		//":desperson"=>$this->getdesperson(),
 
-		$results = $sql->select("CALL sp_addresses_save(:pidaddress, :pidperson, :pdesaddress, :pdescomplement, :pdescity, :pdesstate, :pdescountry, :pdeszipcode, :pdesdistrict)", [
-			':pidaddress'=>$idaddress,
+		$results = $sql->select("CALL sp_addresses_save(:idaddress, :idperson, :desaddress, :descomplement, :descity, :desstate, :descountry, :deszipcode, :desdistrict)", [
+			':idaddress'=>$this->getidaddress(),
 			//':pidperson'=>$this->getidperson(),
-			'idperson'=>$user->getidperson(),
-			':pdesaddress'=>$this->getdesaddress(),
-			':pdescomplement'=>$this->getdescomplement(),
-			':pdescity'=>$this->getdescity(),
-			':pdesstate'=> $desstate,
-			':pdescountry'=>$this->getdescountry(),
-			':pdeszipcode'=>$this->getdeszipcode(),
-			':pdesdistrict'=>$desdistrict,
+			':idperson'=>$this->getidperson(),
+			':desaddress'=>$this->getdesaddress(),
+			':descomplement'=>$this->getdescomplement(),
+			':descity'=>$this->getdescity(),
+			':desstate'=>$this->getdesstate(),
+			':descountry'=>$this->getdescountry(),
+			':deszipcode'=>$this->getdeszipcode(),
+			':desdistrict'=>$this->getdesdistrict()
 
 			]);
 
