@@ -20,6 +20,9 @@ class Sql {
 			Sql::PASSWORD
 		);
 
+
+
+
 	}
 
 	private function setParams($statement, $parameters = array())

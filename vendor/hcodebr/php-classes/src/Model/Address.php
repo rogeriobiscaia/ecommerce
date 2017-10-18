@@ -8,6 +8,8 @@ use \Hcode\Model;
 
 use \Hcode\Model\Cart;
 
+use \Hcode\Model\User;
+
 
 
 
@@ -92,30 +94,42 @@ class Address extends Model {
 		$sql = new Sql();
 
 
+		
+		$pidaddress = 0;
 
-		$idaddress = NULL;
 
 
-		$desstate = NULL;
 
-		$desdistrict = NULL;
+		$desstate = "semestado";
+
+		$desdistrict = "semdistrito";
+
+		
 
 
 		//":desperson"=>$this->getdesperson(),
 
-		$results = $sql->select("CALL sp_addresses_save(:idaddress, :idperson, :desaddress, :descomplement, :descity, :desstate, :descountry, :deszipcode, :desdistrict)", [
-			':idaddress'=>$this->getidaddress(),
-			//':pidperson'=>$this->getidperson(),
-			':idperson'=>$this->getidperson(),
-			':desaddress'=>$this->getdesaddress(),
-			':descomplement'=>$this->getdescomplement(),
-			':descity'=>$this->getdescity(),
-			':desstate'=>$this->getdesstate(),
-			':descountry'=>$this->getdescountry(),
-			':deszipcode'=>$this->getdeszipcode(),
-			':desdistrict'=>$this->getdesdistrict()
+		
+
+
+		$results = $sql->select("CALL sp_addresses_save(:pidaddress, :pidperson, :pdesaddress, :pdescomplement, :pdescity, :pdesstate, :pdescountry, :pdeszipcode, :pdesdistrict)", [
+			':pidaddress'=>$this->getidaddress(),
+			//':pidaddress'=>$pidaddress,
+			':pidperson'=>$this->getidperson(),
+			':pdesaddress'=>$this->getdesaddress(),
+			':pdescomplement'=>$this->getdescomplement(),
+			':pdescity'=>$this->getdescity(),
+			':pdesstate'=>$desstate,
+			//':pdesstate'=>$this->getdesstate(),
+			':pdescountry'=>$this->getdescountry(),
+			':pdeszipcode'=>$this->getdeszipcode(),
+			':pdesdistrict'=>$desdistrict
+			//':pdesdistrict'=>$this->getdesdistrict()
 
 			]);
+
+
+			
 
 
 
