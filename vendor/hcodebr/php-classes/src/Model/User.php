@@ -210,6 +210,7 @@ class User extends Model {
 		
 
 		for ($i=0; $i < $count; $i++) { 
+			
 			$position = $results[$i];
 			$position['desperson'] = utf8_encode($position['desperson']);
 

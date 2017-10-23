@@ -13,6 +13,12 @@ $app->get('/admin/admin/users', function() {
 
 
 
+$app->get('/admin/users/admin/users', function() {
+
+	header("Location: /admin/users");
+	exit;
+});
+
 
 
 
