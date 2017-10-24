@@ -116,12 +116,12 @@ class Address extends Model {
 			':pidaddress'=>$this->getidaddress(),
 			//':pidaddress'=>$pidaddress,
 			':pidperson'=>$this->getidperson(),
-			':pdesaddress'=>$this->getdesaddress(),
-			':pdescomplement'=>$this->getdescomplement(),
-			':pdescity'=>$this->getdescity(),
+			':pdesaddress'=>utf8_decode($this->getdesaddress()),
+			':pdescomplement'=>utf8_decode($this->getdescomplement()),
+			':pdescity'=>utf8_decode($this->getdescity()),
 			':pdesstate'=>$desstate,
 			//':pdesstate'=>$this->getdesstate(),
-			':pdescountry'=>$this->getdescountry(),
+			':pdescountry'=>utf8_decode($this->getdescountry()),
 			':pdeszipcode'=>$this->getdeszipcode(),
 			':pdesdistrict'=>$desdistrict
 			//':pdesdistrict'=>$this->getdesdistrict()
