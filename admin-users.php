@@ -82,7 +82,7 @@ $app->get("/admin/users", function() {
 			]);
 	}
 
-	$users = User::getPage($page);
+	//$users = User::getPage($page);
 
 	$page = new PageAdmin();
 
