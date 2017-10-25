@@ -202,7 +202,7 @@ class User extends Model {
 		//return $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
 
 
-		$results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desemail");
+		$results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
 
 		$count = count($results);
 
@@ -610,6 +610,125 @@ class User extends Model {
 		return $results;
 
 	}
+
+
+
+
+	public static function getPage($page = 1, $itemsPerPage = 3)
+	{
+
+		$start = ($page-1)*$itemsPerPage;
+
+		$sql = new Sql();
+
+
+		$results = $sql->select("SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_users a 
+			INNER JOIN tb_persons b USING(idperson)
+			ORDER BY b.desperson
+			LIMIT $start, $itemsPerPage;
+			");
+
+
+
+
+		$count = count($results);
+
+
+		
+
+		for ($i=0; $i < $count; $i++) { 
+			
+			$position = $results[$i];
+			$position['desperson'] = utf8_encode($position['desperson']);
+			$position['deslogin'] = utf8_encode($position['deslogin']);
+
+			$results[$i] = $position;
+
+
+			//return $position;
+
+		}
+
+
+		/*
+		var_dump($results);
+		exit;
+		*/
+
+
+
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+		return [
+		'data'=>$results,
+		'total'=>(int)$resultTotal[0]["nrtotal"],
+		'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
+		];
+	}
+
+
+
+
+
+	public static function getPageSearch($search, $page = 1, $itemsPerPage = 3)
+	{
+
+		$start = ($page-1)*$itemsPerPage;
+
+		$sql = new Sql();
+
+
+		$results = $sql->select("SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_users a 
+			INNER JOIN tb_persons b USING(idperson)
+			WHERE b.desperson LIKE :search OR b.desemail = :search OR a.deslogin LIKE :search
+			ORDER BY b.desperson
+			LIMIT $start, $itemsPerPage;
+			", [
+			':search'=>'%'.$search.'%'
+			]);
+
+
+
+
+		$count = count($results);
+
+		
+		
+
+		for ($i=0; $i < $count; $i++) { 
+			
+			$position = $results[$i];
+			$position['desperson'] = utf8_encode($position['desperson']);
+			$position['deslogin'] = utf8_encode($position['deslogin']);
+
+			$results[$i] = $position;
+
+
+			//return $position;
+
+		}
+
+
+		/*
+		var_dump($results);
+		exit;
+		*/
+
+
+
+		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+		return [
+		'data'=>$results,
+		'total'=>(int)$resultTotal[0]["nrtotal"],
+		'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
+		];
+	}
+
+
+
 
 
 }
