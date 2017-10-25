@@ -318,9 +318,11 @@ class Cart extends Model {
 	public function getValues()
 	{
 
-		$this->getCalculateTotal();
+		$result = $this->getCalculateTotal();
 
 		return parent::getValues();
+
+		
 	}
 
 
@@ -334,6 +336,7 @@ class Cart extends Model {
 		$this->setvlsubtotal($totals['vlprice']);
 
 		$this->setvltotal($totals['vlprice'] + (float)$this->getvlfreight());
+
 	}
 
 

@@ -230,23 +230,6 @@ class User extends Model {
 
         return $results;
 
-       
-
-       /*
-        
-
-		$two = $results[2];
-
-
-		$two['desperson'] = utf8_encode($two['desperson']);
-
-
-        var_dump($two);
-        exit;
-
-
-        */
-
         
 		/*
 

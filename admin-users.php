@@ -20,6 +20,14 @@ $app->get('/admin/users/admin/users', function() {
 });
 
 
+$app->get('/admin/orders/admin/users', function() {
+
+	header("Location: /admin/users");
+	exit;
+});
+
+
+
 
 
 /*

@@ -9,6 +9,8 @@ use \Hcode\Model\User;
 use \Hcode\Model\Order;
 use \Hcode\Model\OrderStatus;
 
+use \Hcode\DB\Sql;
+
 
 
 
@@ -580,10 +582,34 @@ $app->get("/profile", function(){
 
 
 
+	$iduser = $user->getiduser();
+
+
+	$sql = new Sql();
+
+		$results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) WHERE a.iduser = :iduser", array(
+			":iduser"=>$iduser
+			));
+
+		//$this->setData($results[0]);
+
+		
+		$user = $results[0];
+
+
+		$user['desperson'] = utf8_encode($user['desperson']);
+
+		$user['deslogin'] = utf8_encode($user['deslogin']);
+
+
+	  
+
+
+
 	$page = new Page();
 
 	$page->setTpl("profile", [
-		'user'=>$user->getValues(),
+		'user'=>$user,
 		'profileMsg'=>User::getSuccess(),
 		'profileError'=>User::getError()
 		]);
