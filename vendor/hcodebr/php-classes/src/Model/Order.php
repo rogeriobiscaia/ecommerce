@@ -51,8 +51,40 @@ class Order extends Model {
 
 
 		if (count($results) > 0) {
-			$this->setData($results[0]);
-			return $results;
+			
+			//$this->setData($results[0]);
+
+
+			
+
+			
+
+
+			$count = count($results);
+
+
+
+		    for ($i=0; $i < $count; $i++) { 
+
+		    	$position = $results[$i];
+		    	$position['desperson'] = utf8_encode($position['desperson']);
+		    	$position['deslogin'] = utf8_encode($position['deslogin']);
+
+		    	$results[$i] = $position;
+
+
+
+
+		}
+
+		
+
+
+		$this->setData($results[0]);
+		
+
+		return $results;
+
 		}
 
 	}
@@ -171,7 +203,6 @@ class Order extends Model {
 
 		$sql = new Sql();
 
-
 		$results = $sql->select("SELECT SQL_CALC_FOUND_ROWS *
 			FROM tb_orders a 
 			INNER JOIN tb_ordersstatus b USING(idstatus) 
@@ -184,11 +215,8 @@ class Order extends Model {
 			");
 
 
-
 		$count = count($results);
 
-
-		
 
 		for ($i=0; $i < $count; $i++) { 
 			
@@ -198,9 +226,6 @@ class Order extends Model {
 
 			$results[$i] = $position;
 
-
-			//return $position;
-
 		}
 
 
@@ -208,8 +233,7 @@ class Order extends Model {
 		var_dump($results);
 		exit;
 		*/
-
-
+		
 
 		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
 
@@ -248,7 +272,7 @@ class Order extends Model {
 			]);
 
 
-
+		
 		$count = count($results);
 
 
@@ -263,11 +287,12 @@ class Order extends Model {
 			$results[$i] = $position;
 
 
-			//return $position;
+			
 
 		}
 
 
+		
 		
 
 

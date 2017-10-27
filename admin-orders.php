@@ -85,6 +85,14 @@ $app->get("/admin/orders/:idorder", function($idorder){
 
 	$cart = $order->getCart();
 
+
+	
+
+	
+
+	//var_dump($order);
+	//exit;
+
 	$page = new PageAdmin();
 
 	$page->setTpl("order", [
