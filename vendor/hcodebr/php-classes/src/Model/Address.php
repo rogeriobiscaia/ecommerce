@@ -112,11 +112,12 @@ class Address extends Model {
 		
 
 
-		$results = $sql->select("CALL sp_addresses_save(:pidaddress, :pidperson, :pdesaddress, :pdescomplement, :pdescity, :pdesstate, :pdescountry, :pdeszipcode, :pdesdistrict)", [
+		$results = $sql->select("CALL sp_addresses_save(:pidaddress, :pidperson, :pdesaddress, :pdesnumber, :pdescomplement, :pdescity, :pdesstate, :pdescountry, :pdeszipcode, :pdesdistrict)", [
 			':pidaddress'=>$this->getidaddress(),
 			//':pidaddress'=>$pidaddress,
 			':pidperson'=>$this->getidperson(),
 			':pdesaddress'=>utf8_decode($this->getdesaddress()),
+			':pdesnumber'=>$this->getdesnumber(),
 			':pdescomplement'=>utf8_decode($this->getdescomplement()),
 			':pdescity'=>utf8_decode($this->getdescity()),
 			':pdesstate'=>$desstate,
