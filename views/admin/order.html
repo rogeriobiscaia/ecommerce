@@ -41,7 +41,12 @@
             <address>
                 <strong>{$order.desperson}</strong><br>
                 {$order.desaddress}, {$order.descomplement}<br>
+                {$order.desnumber}<br>
+                {$order.descity}<br>
+
+                <!--
                 {$order.descity} - {$order.desstate}<br>
+            -->
                 {if="$order.nrphone && $order.nrphone!='0'"}Telefone: {$order.nrphone}<br>{/if}
                 E-mail: {$order.desemail}
             </address>
@@ -95,12 +100,15 @@
                     <tbody>
                     <tr>
                         <th style="width:180px;">Método de Pagamento:</th>
-                        <td>Boleto</td>
+                        <td>Paypal</td>
                     </tr>
+
+                    <!--
                     <tr>
                         <th>Parcelas:</th>
                         <td>1x</td>
                     </tr>
+                -->
                     <!--
                     <tr>
                         <th>Valor da Parcela:</th>
@@ -142,8 +150,8 @@
                 <button type="button" onclick="window.location.href = '/admin/orders/{$order.idorder}/status'" class="btn btn-default pull-left" style="margin-left: 5px;">
                     <i class="fa fa-pencil"></i> Editar Status
                 </button>
-                <button type="button" onclick="window.open('/boleto/{$order.idstatus}')" class="btn btn-default pull-left" style="margin-left: 5px;">
-                    <i class="fa fa-barcode"></i> Boleto
+                <button type="button" onclick="window.open('/order/{$order.idorder}/paypal')" class="btn btn-default pull-left" style="margin-left: 5px;">
+                    <i class="fa fa-barcode"></i> Paypal
                 </button>
 
                 

@@ -32,8 +32,8 @@
 										<p id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
 											<label class="" for="billing_cep_1">Código Postal <abbr title="required" class="required">*</abbr>
 											</label>
-											<input type="text" value="{$cart.deszipcode}" placeholder="00000-000" id="billing_cep_1" name="zipcode" class="input-text ">
-											<input type="submit" value="Atualizar Código Postal" id="place_order" class="button alt" formaction="/checkout" formmethod="get">
+											<input type="text" value="{$cart.deszipcode}" placeholder="0000-000" id="billing_cep_1" name="zipcode" class="input-text ">
+											<input type="submit" value="Atualizar Código Postal" id="place_order" class="button alt" formaction="/cart/freight/updatezipcode" formmethod="get">
 										</p>
 										<div class="row">
 											<div class="col-sm-9">
